@@ -8,46 +8,35 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      padding: 20px;
       background-color: #f9f9f9;
       color: #333;
-      text-align: center;
     }
     .message-box {
-      padding: 20px;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      background: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: left; /* Allinea a sinistra */
     }
     .message-box h1 {
-      font-size: 24px;
+      font-size: 14px; /* Titolo più piccolo */
       margin-bottom: 10px;
     }
     .message-box p {
-      font-size: 18px;
+      font-size: 10px; /* Testo più piccolo */
       margin: 5px 0;
-    }
-    .emoji {
-      font-size: 22px;
     }
   </style>
 </head>
 <body>
   <div class="message-box">
-    <h1 id="greeting">Good Morning! 🌞</h1>
-    <p id="message">Start your day with positivity and energy 🤍</p>
+    <h1 id="greeting">Good Morning!🤍</h1>
+    <p id="message">Start your day with positivity and energy 🫶🏽</p>
   </div>
 
   <script>
     const greetings = {
-      morning: "Good Morning! 🌞",
-      afternoon: "Hello! ☀️",
-      evening: "Good Evening! 🌜",
-      night: "Good Night! 🌌",
+      morning: "Good Morning!🤍",
+      afternoon: "Hi girl!🫶🏽",
+      evening: "Good Evening!✨",
+      night: "Good Night!🌜",
     };
 
     const messagesByTime = {
@@ -64,7 +53,7 @@
       Thursday: "Almost there! 🌟 Reflect on your progress and keep pushing forward 🤍",
       Friday: "It's Friday! 🎉 Wrap up the week and get ready for some well-deserved rest 🌙",
       Saturday: "Happy Saturday! 🌞 Time to relax, recharge, and do what makes your soul happy 🧘🏾‍♀️",
-      Sunday: "Sunday vibes 🌻 Reflect on your week, relax deeply, and prepare for a fresh start 🌙",
+      Sunday: "Sunday vibes 🌻 Reflect, relax, and prepare for a fresh start 🌙",
     };
 
     function updateMessage() {
