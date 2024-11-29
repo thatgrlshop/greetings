@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Day Messages</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f9f9f9;
+      color: #333;
+      text-align: center;
+    }
+    .message-box {
+      padding: 20px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .message-box h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .message-box p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+    .emoji {
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+  <div class="message-box">
+    <h1 id="greeting">Good Morning! 🌞</h1>
+    <p id="message">Start your day with positivity and energy 🤍</p>
+  </div>
+
+  <script>
+    const greetings = {
+      morning: "Good Morning! 🌞",
+      afternoon: "Hello! ☀️",
+      evening: "Good Evening! 🌜",
+      night: "Good Night! 🌌",
+    };
+
+    const messagesByTime = {
+      morning: "Rise and shine! 🌅 Let's start the day with positive vibes and gratitude 🤍",
+      afternoon: "Keep going! ☀️ Stay focused on your goals and be grateful for the little things 🫶🏽",
+      evening: "Time to unwind 🌙 Relax, sip your tea, and reflect on the day 🧘🏾‍♀️",
+      night: "Sweet dreams 🌌 Rest well and recharge for a beautiful tomorrow ✨",
+    };
+
+    const messagesByDay = {
+      Monday: "Happy Monday! 🤍 Let's kick off the week with energy and determination 💪",
+      Tuesday: "It's Tuesday 🌼 Keep the momentum going and celebrate small wins 🫶🏽",
+      Wednesday: "Midweek vibes 🌸 Take a deep breath and enjoy the little joys around you ✨",
+      Thursday: "Almost there! 🌟 Reflect on your progress and keep pushing forward 🤍",
+      Friday: "It's Friday! 🎉 Wrap up the week and get ready for some well-deserved rest 🌙",
+      Saturday: "Happy Saturday! 🌞 Time to relax, recharge, and do what makes your soul happy 🧘🏾‍♀️",
+      Sunday: "Sunday vibes 🌻 Reflect on your week, relax deeply, and prepare for a fresh start 🌙",
+    };
+
+    function updateMessage() {
+      const now = new Date();
+      const hour = now.getHours();
+      const day = now.toLocaleString("en-US", { weekday: "long" });
+
+      let timePeriod;
+      if (hour >= 6 && hour < 12) {
+        timePeriod = "morning";
+      } else if (hour >= 12 && hour < 19) {
+        timePeriod = "afternoon";
+      } else if (hour >= 19 && hour < 23) {
+        timePeriod = "evening";
+      } else {
+        timePeriod = "night";
+      }
+
+      const greeting = greetings[timePeriod];
+      const timeMessage = messagesByTime[timePeriod];
+      const dayMessage = messagesByDay[day];
+
+      document.getElementById("greeting").textContent = greeting;
+      document.getElementById("message").textContent = `${timeMessage} ${dayMessage}`;
+    }
+
+    updateMessage();
+    setInterval(updateMessage, 60000); // Aggiorna ogni minuto
+  </script>
+</body>
+</html>
