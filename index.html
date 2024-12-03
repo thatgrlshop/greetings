@@ -13,75 +13,66 @@
       color: #333;
     }
     .message-box {
-      text-align: left; /* Allinea a sinistra */
+      text-align: left;
     }
     .message-box h1 {
-      font-size: 14px; /* Titolo più piccolo */
+      font-size: 14px;
       margin-bottom: 10px;
     }
     .message-box p {
-      font-size: 10px; /* Testo più piccolo */
+      font-size: 10px;
       margin: 5px 0;
     }
   </style>
 </head>
 <body>
   <div class="message-box">
-    <h1 id="greeting">Good Morning!🤍</h1>
-    <p id="message">Start your day with positivity and energy 🫶🏽</p>
+    <h1 id="greeting"></h1>
+    <p id="message"></p>
   </div>
 
   <script>
-    const greetings = {
-      morning: "Good Morning!🤍",
-      afternoon: "Hi girl!🫶🏽",
-      evening: "Good Evening!✨",
-      night: "Good Night!🌜",
+    // Messaggi predefiniti
+    const messages = {
+      greetings: {
+        morning: "Good Morning!🤍",
+        afternoon: "Hi girl!🫶🏽",
+        evening: "Good Evening!✨",
+        night: "Good Night!🌜",
+      },
+      timeMessages: {
+        morning: "Rise and shine! 🌅 Let's start the day with positive vibes and gratitude 🤍",
+        afternoon: "Keep going! ☀️ Stay focused on your goals and be grateful for the little things 🫶🏽",
+        evening: "Time to unwind 🌙 Relax, sip your tea, and reflect on the day 🧘🏾‍♀️",
+        night: "Sweet dreams 🌌 Rest well and recharge for a beautiful tomorrow ✨",
+      },
+      dayMessages: {
+        Monday: "Happy Monday! 🤍 Let's kick off the week with energy and determination 💪",
+        Tuesday: "It's Tuesday 🌼 Keep the momentum going and celebrate small wins 🫶🏽",
+        Wednesday: "Midweek vibes 🌸 Take a deep breath and enjoy the little joys around you ✨",
+        Thursday: "Almost there! 🌟 Reflect on your progress and keep pushing forward 🤍",
+        Friday: "It's Friday! 🎉 Wrap up the week and get ready for some well-deserved rest 🌙",
+        Saturday: "Happy Saturday! 🌞 Time to relax, recharge, and do what makes your soul happy 🧘🏾‍♀️",
+        Sunday: "Sunday vibes 🌻 Reflect, relax, and prepare for a fresh start 🌙",
+      },
     };
 
-    const messagesByTime = {
-      morning: "Rise and shine! 🌅 Let's start the day with positive vibes and gratitude 🤍",
-      afternoon: "Keep going! ☀️ Stay focused on your goals and be grateful for the little things 🫶🏽",
-      evening: "Time to unwind 🌙 Relax, sip your tea, and reflect on the day 🧘🏾‍♀️",
-      night: "Sweet dreams 🌌 Rest well and recharge for a beautiful tomorrow ✨",
-    };
-
-    const messagesByDay = {
-      Monday: "Happy Monday! 🤍 Let's kick off the week with energy and determination 💪",
-      Tuesday: "It's Tuesday 🌼 Keep the momentum going and celebrate small wins 🫶🏽",
-      Wednesday: "Midweek vibes 🌸 Take a deep breath and enjoy the little joys around you ✨",
-      Thursday: "Almost there! 🌟 Reflect on your progress and keep pushing forward 🤍",
-      Friday: "It's Friday! 🎉 Wrap up the week and get ready for some well-deserved rest 🌙",
-      Saturday: "Happy Saturday! 🌞 Time to relax, recharge, and do what makes your soul happy 🧘🏾‍♀️",
-      Sunday: "Sunday vibes 🌻 Reflect, relax, and prepare for a fresh start 🌙",
-    };
-
-    function updateMessage() {
+    // Aggiorna il messaggio in base all'ora e al giorno
+    (function updateMessage() {
       const now = new Date();
       const hour = now.getHours();
       const day = now.toLocaleString("en-US", { weekday: "long" });
 
-      let timePeriod;
-      if (hour >= 6 && hour < 12) {
-        timePeriod = "morning";
-      } else if (hour >= 12 && hour < 19) {
-        timePeriod = "afternoon";
-      } else if (hour >= 19 && hour < 23) {
-        timePeriod = "evening";
-      } else {
-        timePeriod = "night";
-      }
+      // Determina la fascia oraria
+      const timePeriod =
+        hour >= 6 && hour < 12 ? "morning" :
+        hour >= 12 && hour < 19 ? "afternoon" :
+        hour >= 19 && hour < 23 ? "evening" : "night";
 
-      const greeting = greetings[timePeriod];
-      const timeMessage = messagesByTime[timePeriod];
-      const dayMessage = messagesByDay[day];
-
-      document.getElementById("greeting").textContent = greeting;
-      document.getElementById("message").textContent = `${timeMessage} ${dayMessage}`;
-    }
-
-    updateMessage();
-    setInterval(updateMessage, 60000); // Aggiorna ogni minuto
+      // Imposta i messaggi
+      document.getElementById("greeting").textContent = messages.greetings[timePeriod];
+      document.getElementById("message").textContent = `${messages.timeMessages[timePeriod]} ${messages.dayMessages[day]}`;
+    })();
   </script>
 </body>
 </html>
