@@ -67,7 +67,7 @@
       const timePeriod =
         hour >= 6 && hour < 12 ? "morning" :
         hour >= 12 && hour < 19 ? "afternoon" :
-        hour >= 19 && hour < 23 ? "evening" : "night";
+        hour >= 19 && hour < 22 ? "evening" : "night";
 
       // Imposta i messaggi
       document.getElementById("greeting").textContent = messages.greetings[timePeriod];
